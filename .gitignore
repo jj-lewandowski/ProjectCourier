@@ -1,0 +1,13 @@
+# Visual Studio Workspace / Hidden State
+.vs/
+
+# User-specific project files
+*.suo
+*.user
+*.vcxproj.user
+
+# Build outputs
+x64/
+Debug/
+Release/
+ipch/
