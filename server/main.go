@@ -35,7 +35,7 @@ type Session struct {
 }
 
 func main() {
-	http.HandleFunc("/.well-known/jmap", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("GET /.well-known/jmap", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		session := Session{
 			Capabilities: map[string]Capabilities{
