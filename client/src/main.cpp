@@ -1,5 +1,8 @@
 #include <windows.h>
 #include "MainWindow.h"
+#include <commctrl.h>                                                               //This includes the control class names like WC_TREEVIEW or WC_LISTVIEW
+
+#pragma comment(lib, "comctl32.lib")   
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow) {
     const wchar_t CLASS_NAME[] = L"ProjectCourierWindowClass";
@@ -33,6 +36,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
     }
 
     ShowWindow(hwnd, nCmdShow);
+    
+    INITCOMMONCONTROLSEX icex;
+    icex.dwSize = sizeof(INITCOMMONCONTROLSEX);                                     //Defines the size of the structure
+    icex.dwICC = ICC_TREEVIEW_CLASSES | ICC_LISTVIEW_CLASSES;                       //Set of bitflags that indicate which classes will be loaded from the DLL
+    InitCommonControlsEx(&icex);                                                    //Use the function passing the pointer to the INITCOMMONCONTROLSEX structure
 
     MSG msg = {};
     while (GetMessage(&msg, nullptr, 0, 0) > 0) {
