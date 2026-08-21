@@ -1,0 +1,11 @@
+curl command for core/echo capability:
+
+curl -X POST http://localhost:8080/api \
+  -H "Content-Type: application/json" \
+  -d '{
+    "using": ["urn:ietf:params:jmap:core"],
+    "methodCalls": [
+      ["Core/echo", {"hello": "world"}, "c1"],
+      ["Core/echo", {"number": 42, "active": true}, "c2"]
+    ]
+  }'
